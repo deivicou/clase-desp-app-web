@@ -57,8 +57,8 @@ alumnoX.iesvalledeljerteplasencia.com
 ## Panel de administración
 
 - **Zero Trust Dashboard:** https://one.dash.cloudflare.com/
-- Usuario: `tunelcloudflare@gmail.com`
-- Contraseña: `Informatica1.iesvjp`
+- Usuario: `t************m`
+- Contraseña: `I************p`
 
 > Si aparece el error **1033**, acceder al panel de Zero Trust para que se reactive el conector.
 > Ruta directa: https://one.dash.cloudflare.com/62da8e52671c3b073d49fc0e6bcb8c24/networks/connectors
