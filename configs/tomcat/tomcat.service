@@ -1,0 +1,30 @@
+[Unit]
+Description=Apache Tomcat Web Application Container
+After=network.target
+
+[Service]
+Type=forking
+
+# Ajustar JAVA_HOME según la versión instalada (ver con: update-java-alternatives -l)
+Environment=JAVA_HOME=/usr/lib/jvm/java-1.21.0-openjdk-amd64
+Environment=CATALINA_PID=/opt/tomcat/temp/tomcat-pid
+Environment=CATALINA_HOME=/opt/tomcat
+Environment=CATALINA_BASE=/opt/tomcat
+
+# Opciones de la JVM: memoria inicial, máxima, servidor y GC paralelo
+Environment='CATALINA_OPTS=-Xms512M -Xmx1024M -server -XX:+UseParallelGC'
+
+# Sin entorno gráfico y generador de entropía rápido
+Environment='JAVA_OPTS=-Djava.awt.headless=true -Djava.security.egd=file:/dev/./urandom'
+
+ExecStart=/opt/tomcat/bin/startup.sh
+ExecStop=/opt/tomcat/bin/shutdown.sh
+
+User=tomcat
+Group=tomcat
+UMask=0007          # Los ficheros creados son accesibles por el grupo tomcat
+RestartSec=10
+Restart=always
+
+[Install]
+WantedBy=multi-user.target

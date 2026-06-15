@@ -1,0 +1,24 @@
+options {
+    directory "/var/cache/bind";
+
+    // Reenviar consultas no resueltas localmente a estos DNS externos
+    // (Solo funciona si recursion está habilitada)
+    forwarders {
+        8.8.8.8;     // Google DNS
+        1.1.1.1;     // Cloudflare DNS
+    };
+
+    // recursion no;   // Descomentar para deshabilitar consultas recursivas al raíz
+
+    // Control de acceso
+    allow-query     { any; };       // Acepta consultas de cualquier IP
+                                    // Alternativa: localnet (solo red local)
+    allow-transfer  { none; };      // Nadie puede copiar todas las zonas
+                                    // En un maestro: especificar IP del esclavo
+    allow-recursion { none; };      // Nadie puede hacer búsquedas recursivas
+
+    // Escuchar en todas las interfaces IPv4 en el puerto 53
+    listen-on port 53 { any; };
+
+    dnssec-validation auto;
+};

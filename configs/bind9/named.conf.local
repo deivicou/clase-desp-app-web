@@ -1,0 +1,19 @@
+// Zonas personalizadas del servidor DNS
+// Incluir este fichero desde /etc/bind/named.conf si se crea por separado:
+//   include "/etc/bind/named.conf.ejemplo";
+
+// --- Zona directa ---
+zone "ejemplo.com" {
+    type master;
+    file "/etc/bind/db.ejemplo";
+    // Para zona esclava:
+    // type slave;
+    // masters { 192.168.1.1; };
+    // file "/var/cache/bind/db.ejemplo";
+};
+
+// --- Zona inversa (para el rango 127.0.0.x) ---
+zone "0.0.127.in-addr.arpa" {
+    type master;
+    file "/etc/bind/db.127.0.0";
+};

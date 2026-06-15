@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Usuarios y roles para la interfaz web de administración de Tomcat.
+  Fichero: /opt/tomcat/conf/tomcat-users.xml
+
+  IMPORTANTE: cambiar las credenciales en cualquier entorno real.
+-->
+<tomcat-users xmlns="http://tomcat.apache.org/xml"
+              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+              xsi:schemaLocation="http://tomcat.apache.org/xml tomcat-users.xsd"
+              version="1.0">
+
+  <!-- Roles disponibles -->
+  <role rolename="manager-status"/>  <!-- Estado del servidor -->
+  <role rolename="manager-gui"/>     <!-- Interfaz web del Manager -->
+  <role rolename="admin-gui"/>       <!-- Administración de hosts virtuales -->
+
+  <!-- Usuario de administración — CAMBIAR contraseña en producción -->
+  <user username="miUsuario"
+        password="miPass"
+        roles="manager-status,manager-gui,admin-gui"/>
+
+</tomcat-users>

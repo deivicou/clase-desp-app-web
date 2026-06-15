@@ -1,0 +1,22 @@
+; Zona inversa: 0.0.127.in-addr.arpa  (rango 127.0.0.x)
+; Fichero: /etc/bind/db.127.0.0
+;
+; Permite resolución IP → nombre de dominio (registros PTR)
+
+$TTL 86400
+
+@   IN  SOA ns1.ejemplo.com. root.ejemplo.com. (
+            2         ; Serial (debe estar sincronizado o ser mayor que el de la zona directa)
+            3600      ; Refresh
+            1800      ; Retry
+            604800    ; Expire
+            86400 )   ; Neg. Cache TTL
+
+;
+@   IN  NS  ns1.ejemplo.com.
+
+; Registros PTR — último octeto de la IP → nombre de dominio
+; (la parte de red ya está en el nombre de la zona)
+1   PTR ejemplo.com.         ; 127.0.0.1 → ejemplo.com
+2   PTR ns1.ejemplo.com.     ; 127.0.0.2 → ns1.ejemplo.com
+3   PTR prueba.ejemplo.com.  ; 127.0.0.3 → prueba.ejemplo.com

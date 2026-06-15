@@ -1,0 +1,27 @@
+; Zona directa: ejemplo.com
+; Fichero: /etc/bind/db.ejemplo
+;
+; Cada vez que se modifique este fichero, incrementar el Serial
+; para que los servidores esclavos detecten el cambio y se actualicen.
+
+$TTL 86400      ; Tiempo de vida en caché de los clientes (24h)
+
+; Registro SOA — define la autoridad de la zona
+; El . al final indica nombre absoluto (no relativo a la zona)
+@   IN  SOA ns1.ejemplo.com. root.ejemplo.com. (
+            1         ; Serial       YYYYMMDDNN — incrementar al modificar
+            3600      ; Refresh      cada 1h el esclavo comprueba si hay cambios
+            1800      ; Retry        si falla, reintenta cada 30min
+            604800    ; Expire       tras 7 días sin contacto el esclavo deja de responder
+            86400 )   ; Neg. Cache TTL  1 día para registros inexistentes
+
+;
+; Registro NS — nombre del servidor autoritativo
+; Los DNS caché copian este registro para saber a quién preguntar
+@       IN  NS  ns1.ejemplo.com.
+
+; Registros A — nombre → IPv4
+@       IN  A   127.0.0.1           ; ejemplo.com       (dominio raíz)
+ns1     IN  A   127.0.0.2           ; ns1.ejemplo.com   (servidor DNS)
+prueba  IN  A   127.0.0.3           ; prueba.ejemplo.com (subdominio de ejemplo)
+www     IN  CNAME ejemplo.com.      ; www.ejemplo.com   (alias del dominio raíz)
