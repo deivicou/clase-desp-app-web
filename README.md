@@ -2,7 +2,9 @@
 
 > Apuntes y configuraciones del módulo de **Despliegue de Aplicaciones Web**
 
-Repositorio de referencia con comandos, configuraciones y notas organizados por temas. Todos los snippets están probados en **Ubuntu Server** con adaptador NAT/Puente sobre VirtualBox.
+Repositorio de referencia con comandos, configuraciones y notas organizados por temas. Todos los comandos están probados en **Ubuntu Server** con adaptador NAT/Puente sobre VirtualBox.
+
+Actualmente pendiente de trasladar toda la documentación a docker, proviendo de una infraestructura que simule un entorno real mediante contenedores, con redes independientes por alumno y una red común. [docker-lab](https://github.com/deivicou/docker-lab)
 
 ---
 
