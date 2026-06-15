@@ -1,4 +1,4 @@
-# 🌐 clase-desp-app-web
+# 🌐 Despliegue de Aplicaciones Web (DAW2)
 
 > Apuntes y configuraciones del módulo de **Despliegue de Aplicaciones Web**
 
